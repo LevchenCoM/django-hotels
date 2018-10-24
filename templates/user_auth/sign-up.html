@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{%load static%}
+
+{% block content %}
+<!-- <div style="margin-top: 30px; margin-left: auto; margin-right: auto;" class="apartment item"> -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-4 offset-lg-4 col-sm-6 col-xs-8">
+      <div style="margin-top: 39px; margin-bottom: 39px;" class="sidebar_title">Register</div>
+      <form class="" method="post">
+
+        {%csrf_token%}
+        {% for form in user_form %}
+
+        <div>
+          <div style="margin-bottom: 18px">
+            {{form}}
+            <div class="input_border"></div>
+          </div>
+        </div>
+
+        {%endfor%}
+
+        <button type="submit" class="contact_button">Sing-up</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block main_js%}
+<script>
+  var password = document.getElementById("id_password1"),
+    confirm_password = document.getElementById("id_password2");
+
+  function validatePassword() {
+    if (password.value != confirm_password.value) {
+      confirm_password.setCustomValidity("Passwords Don't Match");
+    } else {
+      confirm_password.setCustomValidity('');
+    }
+  }
+
+  // $("#id_password1").on("change") = validatePassword;
+  password.onchange = validatePassword;
+  // $("#id_password2").on("keyup") = validatePassword;
+  confirm_password.onkeyup = validatePassword;
+</script>
+{% endblock %}
+
+{% block  footer%}
+{% endblock %}
