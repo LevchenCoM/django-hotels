@@ -1,32 +1,34 @@
 {%extends 'base.html'%}
 {%load staticfiles%}
+{% load widget_tweaks %}
 
 {%block content%}
-<!-- <form class="" action="" method="POST">
-    {%csrf_token%}
-    {{form}}
-    <button type="submit">Войти</button>
-</form> -->
 
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-4 offset-lg-4 col-sm-6 col-xs-8">
-      <div style="margin-top: 39px; margin-bottom: 39px;" class="sidebar_title">Register</div>
+      <div style="margin-top: 39px; margin-bottom: 39px;" class="sidebar_title">Login</div>
       <form class="" method="post">
 
         {%csrf_token%}
-        {% for f in form %}
 
-        <div>
-          <div style="margin-bottom: 18px">
-            {{f.label_tag}}
-            {{f}}
-            <div class="input_border"></div>
-          </div>
+        <!-- username -->
+        <div style="margin-bottom: 18px">
+          {% render_field form.username type="email" class="contact_input" placeholder="Your email" %}
+          <div class="input_border"></div>
         </div>
 
-        {%endfor%}
+        <!-- password -->
+        <div style="margin-bottom: 18px">
+          {% render_field form.password class="contact_input" placeholder="Your password" %}
+          <div class="input_border"></div>
+        </div>
 
+        {% if form.non_field_errors %}
+        <div class="alert alert-warning">
+          {{ form.non_field_errors }}
+        </div>
+        {% endif %}
         <button type="submit" class="contact_button">Sing-in</button>
       </form>
     </div>

@@ -15,6 +15,7 @@ Including another URLconf
 """
 
 from django.urls import path
+from django.urls import reverse_lazy
 from django.conf.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
@@ -23,8 +24,9 @@ from user import views
 from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
-    # path('sign-in', auth_views.LoginView.as_view(template_name = 'user_auth/sign-in.html'), name='user-sign-in'),
-    path('sign-in', auth_views.LoginView.as_view(template_name = 'user_auth/sign-in.html'), name='user-sign-in'),
-    path('sign-out', auth_views.LogoutView.as_view(), {'next_page':"/home"}, name='user-sign-out'),
-    path('sign-up', views.sign_up, name="user-sign-up"),
+    path('sign-in/', auth_views.LoginView.as_view(template_name = 'user_auth/sign-in.html'), name='user-sign-in'),
+    path('sign-out/', auth_views.LogoutView.as_view(next_page = reverse_lazy('home')), name='user-sign-out'),
+    path('change-password/', auth_views.PasswordChangeView.as_view(template_name = 'user_auth/change-password.html'), name="change_password"),
+    path('change-password-done/', auth_views.PasswordChangeDoneView.as_view(template_name = 'user_auth/change-password-done.html'), name="password_change_done"),
+    path('sign-up/', views.sign_up, name="user-sign-up"),
 ]

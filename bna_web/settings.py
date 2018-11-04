@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_tweaks',
     'home.apps.HomeConfig',
     'apartments.apps.ApartmentsConfig',
     'reservations.apps.ReservationsConfig',
@@ -149,8 +150,8 @@ LOCALE_PATHS = (
 
 EMAIL_HOST="smtp.gmail.com"
 EMAIL_PORT="587"
-EMAIL_HOST_USER="qupadlive@gmail.com"
-EMAIL_HOST_PASSWORD="Rjkz130395"
+EMAIL_HOST_USER=""
+EMAIL_HOST_PASSWORD=""
 EMAIL_USE_TLS=True
 
 LOGIN_REDIRECT_URL = '/home'

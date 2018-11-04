@@ -40,7 +40,7 @@ def apartment(request, apartment_id):
         send_mail(
             'Subject here',
             'Here is the message.',
-            'qupadlive@gmail.com',
-            ['qupad@live.com'],
+            'sender@gmail.com',
+            ['1@gmail.com'],
             fail_silently=False,)
     return render(request,'apartment.html',context)
