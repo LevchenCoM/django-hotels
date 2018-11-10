@@ -12,10 +12,11 @@
 5. Home
 6. Home Search
 7. Intro
-8. apartaments
+8. Apartments
 9. Testimonials
 10. News
-11. Footer
+11. Contact
+12. Footer
 
 
 ******************************/
@@ -256,7 +257,7 @@ section
 
 .header
 {
-	position: fixed;
+	/* position: fixed; */
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -266,11 +267,12 @@ section
 	-ms-transition: all 200ms ease;
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
+	background: black;
 }
 .header_content
 {
 	width: 100%;
-	height: 148px;
+	height: 50px;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
 	-ms-transition: all 200ms ease;
@@ -279,7 +281,8 @@ section
 }
 .header.scrolled
 {
-	background: rgba(24,24,24,0.6);
+	/* background: rgba(24,24,24,0.6); */
+	background: black;
 }
 .header.scrolled .header_content
 {
@@ -292,7 +295,15 @@ section
 .logo a
 {
 	font-family: 'Oswald', sans-serif;
-	font-size: 30px;
+	font-size: 24px;
+	font-weight: 500;
+	color: #FFFFFF;
+	line-height: 0.75;
+}
+.header_username a
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 24px;
 	font-weight: 500;
 	color: #FFFFFF;
 	line-height: 0.75;
@@ -340,6 +351,14 @@ section
 	margin-right: 54px;
 }
 .main_nav ul li a
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	color: #FFFFFF;
+	white-space: nowrap;
+}
+.main_nav ul li button
 {
 	font-family: 'Oswald', sans-serif;
 	font-size: 16px;
@@ -560,7 +579,7 @@ section
 .home
 {
 	width: 100%;
-	height: 834px;
+	height: 586px;
 }
 .home_slider_container
 {
@@ -770,21 +789,6 @@ section
 	outline: none;
 	cursor: pointer;
 }
-.book_button
-{
-	width: 161px;
-	height: 52px;
-	background: #181818;
-	color: #FFFFFF;
-	font-family: 'Oswald', sans-serif;
-	font-size: 16px;
-	font-weight: 400;
-	text-transform: uppercase;
-	border-radius: 20px;
-	border: none;
-	outline: none;
-	cursor: pointer;
-}
 
 /*********************************
 7. Intro
@@ -836,10 +840,10 @@ section
 }
 
 /*********************************
-8. apartaments
+8. apartments
 *********************************/
 
-.apartaments
+.apartments
 {
 	width: 100%;
 	background: #FFFFFF;
@@ -861,15 +865,15 @@ section
 	color: #181818;
 	margin-top: 26px;
 }
-.apartaments_row
+.apartments_row
 {
 	margin-top: 99px;
 }
-.apartament_image
+.apartment_image
 {
 	width: 100%;
 }
-.apartament_image img
+.apartment_image img
 {
 	max-width: 100%;
 }
@@ -891,43 +895,61 @@ section
 	line-height: 36px;
 	font-weight: 400;
 }
-.apartaments_container
+.apartments_container
 {
 	width: calc(100% + 30px);
 	left: -15px;
 }
-.apartament
+.apartment
 {
 	width: calc(100% / 3);
 	padding-left: 15px;
 	padding-right: 15px;
 	margin-bottom: 33px;
 }
-.apartament_content
+.apartment_content
 {
 
 }
-.apartament_title
+.apartment_title
 {
 	margin-top: 15px;
 }
-.apartament_title a
+.apartment_title a
 {
 	font-family: 'Oswald', sans-serif;
 	font-size: 30px;
 	font-weight: 400;
 	color: #181818;
 }
-.apartament_subtitle
+.apartment_subtitle
 {
-	margin-top: -4px;
+	margin-top: 10px;
 }
-.apartament_price
+.apartment_price
 {
 	font-size: 16px;
 	font-weight: 700;
 	color: #181818;
 	margin-top: 16px;
+}
+.book_button
+{
+	margin-top: 18px;
+	width: 100%;
+	height: 40px;
+	background: #181818;
+	color: #FFFFFF;
+	font-family: 'Oswald', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	text-transform: uppercase;
+	border-radius: 20px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	padding-top: 8px;
 }
 
 /*********************************
@@ -1047,16 +1069,20 @@ section
 {
 	width: 100%;
 	background: #FFFFFF;
-	padding-top: 115px;
-	padding-bottom: 115px;
+	padding-top: 70px;
+	padding-bottom: 116px;
+}
+.news_post
+{
+	padding-bottom: 39px;
 }
 .news_post:not(:last-child)
 {
-	margin-bottom: 68px;
+	margin-bottom: 71px;
 }
 .news_post_image
 {
-	width: 34.8%;
+	width: 100%;
 }
 .news_post_image img
 {
@@ -1064,8 +1090,7 @@ section
 }
 .news_post_content
 {
-	width: 65.2%;
-	padding-left: 30px;
+	padding-top: 39px;
 }
 .news_post_date div:first-child
 {
@@ -1100,7 +1125,16 @@ section
 	font-family: 'Oswald', sans-serif;
 	font-size: 28px;
 	font-weight: 400;
-	color: #181818;
+	color: rgba(24,24,24,1);
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.news_post_title a:hover
+{
+	color: rgba(24,24,24,0.5);
 }
 .news_post_category
 {
@@ -1122,11 +1156,192 @@ section
 {
 	margin-top: 14px;
 }
+.news_post_link
+{
+	margin-top: 47px;
+}
+.news_post_link a
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	color: rgba(24,24,24,1);
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.news_post_link a:hover
+{
+	color: rgba(24,24,24,0.5);
+}
+.pagination
+{
+	width: 100%;
+	margin-top: 65px;
+}
+.pagination ul li:not(:last-child)
+{
+	margin-right: 6px;
+}
+.pagination ul li a
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 18px;
+	font-weight: 400;
+	color: #72728c;
+}
+.pagination ul li.active a,
+.pagination ul li:hover a
+{
+	color: #181818;
+}
+.news_sidebar
+{
+	width: 100%;
+}
+.sidebar_title
+{
+	font-family: 'Oswald', sans-serif;
+	font-weight: 500;
+	font-size: 24px;
+	color: #181818;
+	line-height: 0.75;
+}
+.sidebar_list
+{
+	margin-top: 55px;
+}
+.sidebar_list ul
+{
+	padding-left: 35px;
+}
+.sidebar_list ul li
+{
+	position: relative;
+}
+.sidebar_list ul li::before
+{
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: -32px;
+	width: 0px;
+	height: 1px;
+	background: rgba(24,24,24,0.5);
+	content: '';
+	visibility: hidden;
+	opacity: 0;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.sidebar_list ul li:hover::before
+{
+	visibility: visible;
+	opacity: 1;
+	width: 22px;
+}
+.sidebar_list ul li:not(:last-child)
+{
+	margin-bottom: 15px;
+}
+.sidebar_list ul li a
+{
+	display: block;
+	font-size: 14px;
+	color: #72728c;
+	font-weight: 400;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.sidebar_list ul li a:hover
+{
+	color: #181818;
+}
+.latest
+{
+	margin-top: 67px;
+}
+.latest_container
+{
+	margin-top: 59px;
+}
+.latest_post:not(:last-child)
+{
+	margin-bottom: 31px;
+}
+.latest_post_image
+{
+	width: 141px;
+}
+.latest_post_image img
+{
+	max-width: 100%;
+}
+.latest_post_content
+{
+	padding-left: 22px;
+}
+.latest_post_date
+{
+	margin-top: 11px;
+}
+.latest_post_day
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	color: #313131;
+	line-height: 0.75;
+}
+.latest_post_month
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 11px;
+	color: #72728c;
+	text-transform: uppercase;
+	font-weight: 400;
+	line-height: 0.75;
+	margin-left: 6px;
+}
+.latest_post_title
+{
+	margin-top: 13px;
+}
+.latest_post_title a
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 18px;
+	color: rgba(24,24,24,1);
+	font-weight: 400;
+	line-height: 1.2;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.latest_post_title a:hover
+{
+	color: rgba(24,24,24,0.5);
+}
+.latest_post_text
+{
+	margin-top: 5px;
+}
 .travello
 {
 	width: 100%;
 	height: 659px;
 	overflow: hidden;
+	margin-top: 73px;
 }
 .travello_content
 {
@@ -1202,8 +1417,262 @@ section
 	font-weight: 400;
 }
 
+
 /*********************************
-11. Footer
+11. Contact
+*********************************/
+
+.contact_title
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 28px;
+	color: #181818;
+}
+.contact_text
+{
+	margin-top: 30px;
+}
+.contact_list
+{
+	margin-top: 52px;
+}
+.contact_list ul li:not(:last-child)
+{
+	margin-bottom: 36px;
+}
+.contact_list ul li > div:first-child
+{
+	width: 104px;
+	height: 34px;
+	background: #181818;
+	font-family: 'Oswald', sans-serif;
+	color: #FFFFFF;
+	font-size: 16px;
+	text-transform: uppercase;
+	text-align: center;
+	line-height: 34px;
+	border-radius: 10px;
+}
+.contact_list ul li > div:last-child
+{
+	font-size: 14px;
+	color: #88889d;
+	margin-top: 10px;
+	padding-left: 25px;
+}
+.contact_form_container
+{
+	width: 100%;
+	margin-top: 55px;
+}
+.contact_input
+{
+	width: 100%;
+	height: 53px;
+	background: #f2f5f6;
+	border: none;
+	outline: none;
+	padding-left: 20px;
+}
+.contact_input_dates
+{
+	width: 49%;
+	height: 53px;
+	background: #f2f5f6;
+	border: none;
+	outline: none;
+	padding-left: 20px;
+}
+.contact_input_comments
+{
+	width: 100%;
+	height: 106px;
+	background: #f2f5f6;
+	border: none;
+	outline: none;
+	padding: 15px 15px 15px 15px;
+}
+.contact_textarea
+{
+	height: 163px;
+	padding-top: 12px;
+}
+.contact_input::-webkit-input-placeholder
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 14px !important;
+	font-weight: 400 !important;
+	color: #88889d !important;
+}
+.contact_input:-moz-placeholder
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 14px !important;
+	font-weight: 400 !important;
+	color: #88889d !important;
+}
+.contact_input::-moz-placeholder
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 14px !important;
+	font-weight: 400 !important;
+	color: #88889d !important;
+}
+.contact_input:-ms-input-placeholder
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 14px !important;
+	font-weight: 400 !important;
+	color: #88889d !important;
+}
+.contact_input_dates::input-placeholder
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 14px !important;
+	font-weight: 400 !important;
+	color: #88889d !important;
+}
+.contact_input_dates::-webkit-input-placeholder
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 14px !important;
+	font-weight: 400 !important;
+	color: #88889d !important;
+}
+.contact_input_dates:-moz-placeholder
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 14px !important;
+	font-weight: 400 !important;
+	color: #88889d !important;
+}
+.contact_input_dates::-moz-placeholder
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 14px !important;
+	font-weight: 400 !important;
+	color: #88889d !important;
+}
+.contact_input_dates:-ms-input-placeholder
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 14px !important;
+	font-weight: 400 !important;
+	color: #88889d !important;
+}
+.contact_input_dates::input-placeholder
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 14px !important;
+	font-weight: 400 !important;
+	color: #88889d !important;
+}
+.contact_input_comments::-webkit-input-placeholder
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 14px !important;
+	font-weight: 400 !important;
+	color: #88889d !important;
+}
+.contact_input_comments:-moz-placeholder
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 14px !important;
+	font-weight: 400 !important;
+	color: #88889d !important;
+}
+.contact_input_comments::-moz-placeholder
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 14px !important;
+	font-weight: 400 !important;
+	color: #88889d !important;
+}
+.contact_input_comments:-ms-input-placeholder
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 14px !important;
+	font-weight: 400 !important;
+	color: #88889d !important;
+}
+.contact_form .input_border
+{
+	position: absolute;
+	left: 0;
+	bottom: -2px;
+	width: 100%;
+	height: 2px;
+	background: #181818;
+	visibility: hidden;
+	opacity: 0;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.contact_form_container .input_border
+{
+	position: absolute;
+	left: 0;
+	bottom: -2px;
+	width: 100%;
+	height: 2px;
+	background: #181818;
+	visibility: hidden;
+	opacity: 0;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.contact_button
+{
+	width: 100%;
+	height: 52px;
+	background: #181818;
+	font-family: 'Oswald', sans-serif;
+	color: #FFFFFF;
+	font-size: 16px;
+	text-transform: uppercase;
+	border-radius: 20px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	margin-top: 35px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.contact_map
+{
+	width: 100%;
+	height: 692px;
+}
+.map
+{
+	width: 100%;
+	height: 100%;
+}
+.google_map
+{
+	width: 100%;
+	height: 100%;
+}
+.map_container
+{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+#map
+{
+	width: 100%;
+	height: calc(100% + 30px);
+}
+
+/*********************************
+12. Footer
 *********************************/
 
 .footer
@@ -1376,4 +1845,23 @@ section
 .footer_contact_list ul li:not(:last-child)
 {
 	margin-bottom: 7px;
+}
+.apartment_page_img
+{
+	margin-top: 5%;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+.apartment_page_title
+{
+	margin-top: 5%;
+	font-family: 'Oswald', sans-serif;
+	font-size: 30px;
+	font-weight: 400;
+	color: #181818;
+}
+.apartment_page_subtitle
+{
+	margin-top: 30px;
+	font-size: 16px;
 }

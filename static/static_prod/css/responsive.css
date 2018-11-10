@@ -183,7 +183,7 @@
 	{
 		margin-bottom: 50px;
 	}
-	.apartament
+	.apartment
 	{
 		width: calc(100% / 2);
 	}
@@ -194,6 +194,14 @@
 	.footer_contact_col:not(:last-child)
 	{
 		margin-bottom: 60px;
+	}
+	.news
+	{
+		padding-top: 27px;
+	}
+	.news_sidebar
+	{
+		margin-top: 115px;
 	}
 }
 
@@ -235,12 +243,12 @@
 		padding-left: 0;
 		padding-right: 0;
 	}
-	.apartaments_container
+	.apartments_container
 	{
 		width: 100%;
 		left: auto;
 	}
-	.apartament
+	.apartment
 	{
 		width: 100%;
 		padding-left: 0;
@@ -356,11 +364,11 @@
 		height: 42px;
 		font-size: 12px;
 	}
-	.apartament_title a
+	.apartment_title a
 	{
 		font-size: 24px;
 	}
-	.apartament_price
+	.apartment_price
 	{
 		font-size: 14px;
 	}
