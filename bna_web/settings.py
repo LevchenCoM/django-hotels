@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'apartments.apps.ApartmentsConfig',
     'reservations.apps.ReservationsConfig',
+    'contact.apps.ContactConfig',
 ]
 
 MIDDLEWARE = [
@@ -139,8 +140,8 @@ from django.utils.translation import gettext_lazy as _
 #Availible languages
 LANGUAGES = [
     ('en', _('English')),
-    ('ru', _('Russian')),
-    ('pl', _('Polish')),
+    # ('ru', _('Russian')),
+    # ('pl', _('Polish')),
 ]
 
 # tuple of dirs with files of localization
@@ -156,3 +157,8 @@ EMAIL_USE_TLS=True
 
 LOGIN_REDIRECT_URL = '/home'
 LOGIN_URL = '/user/sign-in/'
+
+try:
+    from .settings_prod import *
+except:
+    pass

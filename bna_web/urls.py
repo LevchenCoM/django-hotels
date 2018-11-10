@@ -24,6 +24,7 @@ from django.conf.urls.i18n import i18n_patterns
 urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
     path('home/', include('home.urls')),
+    path('contact/',include('contact.urls')), 
     path('apartments/',include('apartments.urls')),
     path('reservations/',include('reservations.urls')),
     path('user/',include('user.urls')),
