@@ -1,6 +1,7 @@
 from django.db import models
 from apartments.models import Apartment
 from django.db.models.signals import post_save
+from datetime import datetime, date, timedelta
 # Create your models here.
 
 class Status(models.Model):
@@ -28,6 +29,20 @@ class Reservation(models.Model):
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
+    def set_booked_dates(self, apartment): #set 'BOOKED' status for selected days
+
+        def book(date): #set 'BOOKED' status for param date for selected apartment
+            new_book_date = ReservedDates(apartment=apartment, date=date, status='1', reservation=self) #status = booked
+            try:
+                new_book_date.save()
+            except:
+                print(("Can't book this date ({}) because it already booked").format(date))
+
+        delta = (self.check_out_date - self.check_in_date).days
+        current_date = self.check_in_date
+        while current_date != self.check_out_date:
+            book(current_date)
+            current_date = current_date + timedelta(days=1)
 
     def __str__(self):
         return "Reservation {} {}".format(self.id, self.status)
@@ -59,6 +74,28 @@ class ApartmentInReservation(models.Model):
     #     self.total_price = self.num * price_per_item
     #
     #     super(apartmentInReservation,self).save(*args, **kwargs)
+
+class ReservedDates(models.Model):
+    DISABLE = '0'
+    BOOKED = '1'
+    STATUS_CHOICES = (
+        (DISABLE, 'Disable'),
+        (BOOKED, 'Booked'),
+    )
+    status = models.CharField(max_length=1,
+                                      choices=STATUS_CHOICES,
+                                      default=DISABLE)
+    apartment   = models.ForeignKey(Apartment, on_delete= models.CASCADE, blank=True, null=True, default=None)
+    date = models.DateField(null=True)
+    is_active = models.BooleanField(default=True)
+    reservation  = models.ForeignKey(Reservation, on_delete= models.SET_NULL, blank=True, null=True, default=None)
+    created = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    class Meta:
+        verbose_name = "Reserved date"
+        verbose_name_plural = "Reserved dates"
+        unique_together = ("date", "apartment")
 
 def apartment_in_reservation_postsave(sender, instance, created, **kwargs):
     pass

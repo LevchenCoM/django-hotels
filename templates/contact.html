@@ -4,7 +4,12 @@
 {% block page_title %}B&A Contact Us{% endblock %}
 
 {% block content %}
-<div class="contact">
+
+<div class="home">
+  <div class="background_image" style="background-image:url({% static 'images/contact.jpg' %})"></div>
+</div>
+
+<div style="margin-top: 50px;" class="contact">
   <div class="container">
     <div class="row">
 
@@ -37,17 +42,63 @@
       <!-- Contact Form -->
       <div class="col-lg-6">
         <div class="contact_form_container">
-          <form action="#" id="contact_form" class="contact_form">
-            <div style="margin-bottom: 18px"><input type="text" class="contact_input contact_input_name inpt" placeholder="Your Name" required="required"><div class="input_border"></div></div>
-            <div class="row">
-              <div class="col-lg-6" style="margin-bottom: 18px">
-                <div><input type="text" class="contact_input contact_input_email inpt" placeholder="Your E-mail" required="required"><div class="input_border"></div></div>
+          <form method="post" id="contact_form" class="contact_form">
+            {%csrf_token%}
+            {% if not request.user.is_authenticated %}
+              <div style="margin-bottom: 18px">
+                {{form.name}}
+                <div class="input_border"></div></div>
+                {% if form.name.errors %}
+                <div class="alert alert-warning">
+                  {{ form.name.errors }}
+                </div>
+                {% endif %}
+              <div class="row">
+                <div class="col-lg-6" style="margin-bottom: 18px">
+                  {{form.email}}
+                </div>
+                <div class="col-lg-6" style="margin-bottom: 18px">
+                  {{form.subject}}
+                </div>
               </div>
-              <div class="col-lg-6" style="margin-bottom: 18px">
-                <div><input type="text" class="contact_input contact_input_subject inpt" placeholder="Subject" required="required"><div class="input_border"></div></div>
+              {% if form.email.errors %}
+              <div class="alert alert-warning">
+                {{ form.email.errors }}
               </div>
-            </div>
-            <div><textarea class="contact_textarea contact_input inpt" placeholder="Message" required="required"></textarea><div class="input_border" style="bottom:3px"></div></div>
+              {% endif %}
+              {% if form.subject.errors %}
+              <div class="alert alert-warning">
+                {{ form.subject.errors }}
+              </div>
+              {% endif %}
+            {% else %}
+              {% if form.name.errors %}
+              <div class="alert alert-warning">
+                {{ form.name.errors }}
+              </div>
+              {% endif %}
+              {% if form.email.errors %}
+              <div class="alert alert-warning">
+                {{ form.email.errors }}
+              </div>
+              {% endif %}
+              <div style="margin-bottom: 18px">
+              {{form.subject}}
+              <div class="input_border"></div></div>
+              {% if form.subject.errors %}
+              <div class="alert alert-warning">
+                {{ form.subject.errors }}
+              </div>
+              {% endif %}
+            {% endif %}
+            <div>
+              {{form.message}}
+              <div class="input_border" style="bottom:3px"></div></div>
+              {% if form.message.errors %}
+              <div class="alert alert-warning">
+                {{ form.message.errors }}
+              </div>
+              {% endif %}
             <button class="contact_button">send</button>
           </form>
         </div>
@@ -69,4 +120,55 @@
   </div>
 </div>
 
+{% endblock %}
+{% block main_js %}
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAOeb2Q0k-J1QXhaTiDdsEx0KuUJtsOkXY"></script>
+{% endblock %}
+{% block main_js_after %}
+<script>
+  var myLatlng = new google.maps.LatLng(52.233235, 21.019306);
+    var mapOptions =
+    {
+      center: myLatlng,
+        zoom: 14,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    draggable: true,
+    scrollwheel: false,
+    zoomControl: true,
+    zoomControlOptions:
+    {
+      position: google.maps.ControlPosition.RIGHT_CENTER
+    },
+    mapTypeControl: false,
+    scaleControl: false,
+    streetViewControl: false,
+    rotateControl: false,
+    fullscreenControl: true,
+    styles:
+    [
+      {
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "color": "#ffeba1"
+          }
+        ]
+      }
+    ]
+    }
+
+    // Initialize a map with options
+    map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+  // Re-center map after window resize
+  google.maps.event.addDomListener(window, 'resize', function()
+  {
+    setTimeout(function()
+    {
+      google.maps.event.trigger(map, "resize");
+      map.setCenter(myLatlng);
+    }, 1400);
+  });
+</script>
 {% endblock %}

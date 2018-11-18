@@ -59,7 +59,9 @@
                     <a href="/apartments/{{apartment.id}}"><img src="{{ i.image.url }}" alt="{{ apartment.name }}"></a>
                   {% endif %}
               {% endfor %}
+              {% if apartment.special_offer %}
               <div class="spec_offer text-center"><a href="/apartments/{{apartment.id}}">Special Offer</a></div>
+              {% endif %}
             </div>
             <div class="apartment_content">
               <div class="apartment_title"><a href="/apartments/{{apartment.id}}">{{ apartment.name }}</a></div>

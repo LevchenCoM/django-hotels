@@ -13,7 +13,8 @@ class ApartmentPropertyInline(admin.TabularInline):
 
 @admin.register(Apartment) #регистрация в админке
 class ApartmentAdmin(admin.ModelAdmin):
-    list_display = [field.name for field in Apartment._meta.fields]
+    list_display = ['is_active', 'name', 'price', 'special_offer', 'special_price', 'created', 'updated']
+    list_display_links = ['name']
     inlines = [ApartmentImageInline, ApartmentPropertyInline]
 
     class Meta:
@@ -40,9 +41,9 @@ class ApartmentPropertyAdmin(admin.ModelAdmin):
     class Meta:
         model = ApartmentProperty
 
-@admin.register(ApartmentDates)
-class ApartmentDatesAdmin(admin.ModelAdmin):
-    list_display = [field.name for field in ApartmentDates._meta.fields]
-
-    class Meta:
-        model = ApartmentDates
+# @admin.register(ApartmentDates)
+# class ApartmentDatesAdmin(admin.ModelAdmin):
+#     list_display = [field.name for field in ApartmentDates._meta.fields]
+#
+#     class Meta:
+#         model = ApartmentDates

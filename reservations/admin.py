@@ -32,3 +32,10 @@ class ApartmentInReservationAdmin(admin.ModelAdmin):
 
 
 admin.site.register(ApartmentInReservation,ApartmentInReservationAdmin)
+
+@admin.register(ReservedDates)
+class ReservedDatesAdmin(admin.ModelAdmin):
+    list_display = [field.name for field in ReservedDates._meta.fields]
+
+    class Meta:
+        model = ReservedDates

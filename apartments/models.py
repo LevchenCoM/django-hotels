@@ -1,14 +1,16 @@
 from django.db import models
-
+# from reservations.models import Reservation
 # Create your models here.
 
 class Apartment(models.Model):
-    name = models.CharField(max_length=64, blank=True, null=True, default=None)
-    short_description = models.TextField(max_length=200, blank=True, null=True, default=None)
-    description = models.TextField(blank=True, null=True, default=None)
-    price = models.DecimalField(max_digits=10,decimal_places=2, default=0)
-    image_main = models.ImageField(upload_to='product_images/')
     is_active  = models.BooleanField(default=True)
+    name = models.CharField(max_length=64, blank=True, null=True)
+    short_description = models.TextField(max_length=200, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    price = models.DecimalField(max_digits=10,decimal_places=2, default=0)
+    special_offer = models.BooleanField(default=False)
+    special_price = models.DecimalField(max_digits=10,decimal_places=2, default=0)
+    image_main = models.ImageField(upload_to='product_images/')
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
@@ -32,26 +34,27 @@ class ApartmentImage(models.Model):
         verbose_name_plural = "Images"
         ordering = ['number_of_image']
 
-class ApartmentDates(models.Model):
-    DISABLE = '0'
-    BOOKED = '1'
-    STATUS_CHOICES = (
-        (DISABLE, 'Disable'),
-        (BOOKED, 'Booked'),
-    )
-    status = models.CharField(max_length=1,
-                                      choices=STATUS_CHOICES,
-                                      default=DISABLE)
-    apartment   = models.ForeignKey(Apartment, on_delete= models.CASCADE, blank=True, null=True, default=None)
-    date = models.DateField(null=True)
-    is_active = models.BooleanField(default=True)
-    created = models.DateTimeField(auto_now_add=True, auto_now=False)
-    updated = models.DateTimeField(auto_now_add=False, auto_now=True)
-
-    class Meta:
-        verbose_name = "Date statuses"
-        verbose_name_plural = "Dates statuses"
-        unique_together = ("date", "apartment")
+# class ApartmentDates(models.Model):
+#     DISABLE = '0'
+#     BOOKED = '1'
+#     STATUS_CHOICES = (
+#         (DISABLE, 'Disable'),
+#         (BOOKED, 'Booked'),
+#     )
+#     status = models.CharField(max_length=1,
+#                                       choices=STATUS_CHOICES,
+#                                       default=DISABLE)
+#     apartment   = models.ForeignKey(Apartment, on_delete= models.CASCADE, blank=True, null=True, default=None)
+#     date = models.DateField(null=True)
+#     is_active = models.BooleanField(default=True)
+#     # reservation  = models.ForeignKey(Reservation, on_delete= models.SET_NULL, blank=True, null=True, default=None)
+#     created = models.DateTimeField(auto_now_add=True, auto_now=False)
+#     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+#
+#     class Meta:
+#         verbose_name = "Date statuses"
+#         verbose_name_plural = "Dates statuses"
+#         unique_together = ("date", "apartment")
 
 class Property(models.Model):
     name = models.CharField(max_length=32, blank=False, null=False, default=None)

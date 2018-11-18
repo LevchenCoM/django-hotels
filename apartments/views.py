@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
-from apartments.models import Apartment, ApartmentImage, ApartmentDates
-from reservations.models import Reservation, Status, ApartmentInReservation
+from apartments.models import Apartment, ApartmentImage
+from reservations.models import Reservation, Status, ApartmentInReservation, ReservedDates
 from datetime import datetime, date
 from django.core.mail import send_mail
 # Create your views here.
@@ -10,14 +10,9 @@ def apartment(request, apartment_id):
         apartment = Apartment.objects.get(id=apartment_id)
     except:
         return HttpResponseNotFound()
-    apartment_images = ApartmentImage.objects.filter(apartment_id=apartment_id).order_by("number_of_image")
-    disableDatesSet = ApartmentDates.objects.filter(date__gte=datetime.today(), is_active=True)
-    disableDates = []
-    for d_date in disableDatesSet:
-        disableDates.append('{}/{}/{}'.format(d_date.date.day, d_date.date.month, d_date.date.year))
     # test_date = "{}/{}/{}".format(test_date.day, test_date.month, test_date.year)
     # print(test_date)
-    context = {'apartment':apartment,'apartment_images': apartment_images, 'disableDates':disableDates}
+
     if request.method == "POST":
         check_in = datetime.strptime(request.POST['check_in'],'%d/%m/%y')
         check_out = datetime.strptime(request.POST['check_out'],'%d/%m/%y')
@@ -32,15 +27,23 @@ def apartment(request, apartment_id):
                                   total_price=total_price,
                                   comments = request.POST['comments'])
         reservation.save()
+        reservation.set_booked_dates(apartment)
         apartment_in_reservation = ApartmentInReservation(reservation=reservation,
                                                          apartment=apartment, num=delta.days,
                                                          price_per_item=apartment.price,
                                                          total_price=total_price)
         apartment_in_reservation.save()
-        send_mail(
-            'Subject here',
-            'Here is the message.',
-            'sender@gmail.com',
-            ['1@gmail.com'],
-            fail_silently=False,)
+        # send_mail(
+        #     'Subject here',
+        #     'Here is the message.',
+        #     'sender@gmail.com',
+        #     ['1@gmail.com'],
+        #     fail_silently=False,)
+    apartment_images = ApartmentImage.objects.filter(apartment_id=apartment_id).order_by("number_of_image")
+    disableDatesSet = ReservedDates.objects.filter(date__gte=datetime.today(), is_active=True, apartment=apartment)
+    disableDates = []
+    for d_date in disableDatesSet:
+        disableDates.append('{}/{}/{}'.format(d_date.date.day, d_date.date.month, d_date.date.year))
+    context = {'apartment':apartment,'apartment_images': apartment_images, 'disableDates':disableDates}
+
     return render(request,'apartment.html',context)

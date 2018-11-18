@@ -30,6 +30,7 @@ $(document).ready(function() {
   var menu = $('.menu');
   var menuActive = false;
   var burger = $('.hamburger');
+  var map;
 
   setHeader();
 
@@ -51,7 +52,6 @@ $(document).ready(function() {
   initTestimonialsSlider();
   initScrolling();
   initInput();
-
   /*
 
   2. Set Header
