@@ -1,0 +1,266 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}{{apartment.name}} - B&A{% endblock %}
+{% block main_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/carousel_main.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/datepicker/css/bootstrap-datepicker3.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/intl-tel-input/css/intlTelInput.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<!-- apartment -->
+
+<div class="news">
+	<div class="container">
+		<div class="row">
+
+			<!-- News Container -->
+			<div class="col-lg-8">
+				<div class="news_container">
+					<!-- News Post -->
+					<!-- <div class="news_post" id="post_carousel" data-ride="carousel"> -->
+					<div id="post_carousel" class="carousel slide" data-ride="carousel" data-ride="carousel">
+						<ol class="carousel-indicators">
+							{% for i in apartment_images %}
+							{% if forloop.first %}
+							<li data-target="#post_carousel" data-slide-to="{{forloop.counter0}}" class="active"></li>
+							{% else %}
+							<li data-target="#post_carousel" data-slide-to="{{forloop.counter0}}"></li>
+							{% endif %}
+							{% endfor %}
+						</ol>
+						<!-- <div class="news_post_image"> -->
+						<div class="carousel-inner" style="width: 100%">
+							{% for i in apartment_images %}
+							{% if forloop.first %}
+							<div class="carousel-item active">
+								<img class="d-block w-85" style="max-width: 100%" src="{{ i.image.url }}" alt="">
+							</div>
+							{% else %}
+							<div class="carousel-item">
+								<img class="d-block w-85" style="max-width: 100%" src="{{ i.image.url }}" alt="">
+							</div>
+							{% endif %}
+							{% endfor %}
+						</div>
+						<a class="carousel-control-prev" href="#post_carousel" role="button" data-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="carousel-control-next" href="#post_carousel" role="button" data-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
+					</div>
+
+					<div class="news_post_content">
+						<div class="news_post_title"><a href="">{{apartment.name}}</a></div>
+						<div class="news_post_text">
+							<p>{{ apartment.description}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- </div> -->
+
+			<!-- News Sidebar -->
+			<div class="col-lg-4">
+				<div class="news_sidebar">
+					<div class="sidebar_title">{{apartment.name}}</div>
+						<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
+						<div>${{apartment.price}}</div>
+						<div>/per night</div>
+						</div>
+				</div>
+				<!-- Book Form -->
+				<div class="contact_form_container" style="margin-top:25px;">
+					<form method="post" action="" id="pre_reservation_form" class="contact_form">
+						{% csrf_token %}
+						<div style="margin-bottom: 18px"><input type="text" name="name" class="contact_input contact_input_name inpt" placeholder="Your Name" required="required">
+							<div class="input_border"></div>
+						</div>
+						<div style="margin-bottom: 18px"><input type="text" name="email" class="contact_input contact_input_email inpt" placeholder="Your email" required="required">
+							<div class="input_border"></div>
+						</div>
+						<input type="hidden" id="tel_hidden" name="tel_full">
+						<div style="margin-bottom: 18px"><input type="tel" maxlength="10" id="tel" name="tel" class="contact_input contact_input_tel inpt" placeholder="Your telephone" required="required">
+							<div class="input_border"></div>
+						</div>
+						<div style="margin-bottom: 18px" class="input-daterange">
+
+							<input type="text" id="check_in_date" name="check_in" class="contact_input_dates contact_input_check_in inpt" placeholder="Check-in" required="required">
+							<input type="text" id="check_out_date" name="check_out" style="float: right;" class="contact_input_dates contact_input_check_out inpt" placeholder="Check-out" required="required"></textarea>
+
+							<div class="input_border"></div>
+
+							<!-- <div style="margin-bottom: 18px"></div> -->
+							<!-- <input type="text" id="check_out_date" name = "check_out" class="contact_input_dates contact_input_check_out inpt" placeholder="Check-out" required="required"> -->
+
+							<!-- <div class="input_border"></div> -->
+						</div>
+						<div style="margin-bottom: 0px"><textarea type="comments" name="comments" class="contact_input_comments contact_input_comments inpt" style="resize: none;" placeholder="Leave your comments here"></textarea>
+							<div class="input_border"></div>
+						</div>
+						<button class="contact_button">Book</button>
+					</form>
+				</div>
+
+				<!-- Latest News -->
+				<div class="latest">
+					<div class="sidebar_title">Latest News</div>
+					<div class="latest_container">
+
+						<!-- Latest Post -->
+						<div class="latest_post d-flex flex-row align-items-start justify-content-start">
+							<div class="latest_post_image"><img src="{% static 'images/latest_1.jpg' %}" alt=""></div>
+							<div class="latest_post_content">
+								<div class="latest_post_date d-flex flex-row align-items-end justify-content-start">
+									<div class="latest_post_day">02</div>
+									<div class="latest_post_month">june</div>
+								</div>
+								<div class="latest_post_title"><a href="#">Best tips to travel light</a></div>
+								<div class="latest_post_text">
+									<p>Pellentesque sit amet..</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- Latest Post -->
+						<div class="latest_post d-flex flex-row align-items-start justify-content-start">
+							<div class="latest_post_image"><img src="{% static 'images/latest_2.jpg' %}" alt=""></div>
+							<div class="latest_post_content">
+								<div class="latest_post_date d-flex flex-row align-items-end justify-content-start">
+									<div class="latest_post_day">02</div>
+									<div class="latest_post_month">june</div>
+								</div>
+								<div class="latest_post_title"><a href="#">Best tips to travel light</a></div>
+								<div class="latest_post_text">
+									<p>Pellentesque sit amet..</p>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<!-- <div class="travello">
+							<div class="background_image" style="background-image:url({% static 'images/travello.jpg' %})"></div>
+							<div class="travello_content">
+								<div class="travello_content_inner">
+									<div></div>
+									<div></div>
+								</div>
+							</div>
+							<div class="travello_container">
+								<a href="#">
+									<div class="d-flex flex-column align-items-center justify-content-end">
+										<span class="travello_title">Get a 20% Discount</span>
+										<span class="travello_subtitle">Buy Your Vacation Online Now</span>
+									</div>
+								</a>
+							</div>
+						</div> -->
+
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+<!-- Intro -->
+<div class="intro">
+	<!-- <div class="intro_background" style="background-image:url({% static 'images/intro.png' %})"></div> -->
+	<div class="intro_background"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="intro_container">
+					<div class="row">
+
+						<!-- Intro Item -->
+						<div class="col-lg-4 intro_col">
+							<div class="intro_item d-flex flex-row align-items-end justify-content-start">
+								<div class="intro_icon"><img src="{% static 'images/beach.svg' %}" alt=""></div>
+								<div class="intro_content">
+									<div class="intro_title">Top apartments</div>
+									<div class="intro_subtitle">
+										<p>Nulla pretium tincidunt felis, nec.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Intro Item -->
+						<div class="col-lg-4 intro_col">
+							<div class="intro_item d-flex flex-row align-items-end justify-content-start">
+								<div class="intro_icon"><img src="{% static 'images/wallet.svg' %}" alt=""></div>
+								<div class="intro_content">
+									<div class="intro_title">The Best Prices</div>
+									<div class="intro_subtitle">
+										<p>Sollicitudin mauris lobortis in.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Intro Item -->
+						<div class="col-lg-4 intro_col">
+							<div class="intro_item d-flex flex-row align-items-end justify-content-start">
+								<div class="intro_icon"><img src="{% static 'images/suitcase.svg' %}" alt=""></div>
+								<div class="intro_content">
+									<div class="intro_title">Amazing Services</div>
+									<div class="intro_subtitle">
+										<p>Nulla pretium tincidunt felis, nec.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+{% block main_js%}
+<script src="{% static 'plugins/datepicker/js/bootstrap-datepicker.min.js' %}"></script>
+<script src="{% static 'plugins/intl-tel-input/js/intlTelInput-jquery.min.js' %}"></script>
+<script src="{% static 'plugins/intl-tel-input/js/utils.js' %}"></script>
+<script>
+	// datapicker range
+	$('.input-daterange').datepicker({ //set datapicker
+		format: 'dd/mm/yy',
+		// locale: 'pl',
+		orientation: 'bottom auto',
+		todayHighlight: true,
+		startDate: '-0d',
+		autoclose: true,
+		datesDisabled: { % autoescape off %
+		} {
+			{
+				disableDates
+			}
+		} { % endautoescape %
+		}
+	});
+	$("#tel").intlTelInput({
+		initialCountry: 'pl',
+		separateDialCode: true,
+	});
+	$("#tel").on("change", function(e) {
+		$("#tel_hidden").val($("#tel").intlTelInput("getNumber"));
+	});
+	$('.news_post').carousel()
+	$('[type=tel]').on('change', function(e) {
+		$(e.target).val($(e.target).val().replace(/[^\d\.]/g, ''))
+	})
+	$('[type=tel]').on('keypress', function(e) {
+		keys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.']
+		return keys.indexOf(event.key) > -1
+	})
+</script>
+{% endblock %}

@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseNotFound
 from .forms import ContactForm
 # Create your views here.
 def contact(request):
+    
     if request.method == 'POST':
         if request.user.is_authenticated:
             post_data = {'name':request.user.get_username(), 'email': request.user.get_username(), \
@@ -15,4 +16,5 @@ def contact(request):
             return redirect('/contact/')
     else:
         contact_form = ContactForm()
-    return render(request,'contact.html', {'form':contact_form})
+
+    return render(request,'pages/contact.html', {'form':contact_form})

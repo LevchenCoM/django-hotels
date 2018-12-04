@@ -6,9 +6,9 @@ FILE_UPLOAD_PERMISSIONS = 0o644
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
+        'NAME': 'bna_db',
+        'USER': 'bna_site',
+        'PASSWORD': 'MightyBogdan',
         'HOST': 'localhost',
         'PORT': '',                      # Set to empty string for default.
     }

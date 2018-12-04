@@ -108,14 +108,14 @@ p a:hover::after
 {
 	opacity: 0.2;
 }
-::selection
+/* ::selection
 {
 
-}
-p::selection
+} */
+/* p::selection
 {
 
-}
+} */
 h1{font-size: 72px;}
 h2{font-size: 48px;}
 h3{font-size: 36px;}
@@ -129,7 +129,7 @@ h1, h2, h3, h4, h5, h6
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
 }
-h1::selection,
+/* h1::selection,
 h2::selection,
 h3::selection,
 h4::selection,
@@ -137,7 +137,7 @@ h5::selection,
 h6::selection
 {
 
-}
+} */
 .form-control
 {
 	color: #db5246;
@@ -310,7 +310,7 @@ section
 }
 .main_nav
 {
-	margin-left: 242px;
+	/* margin-left: 242px; */
 }
 .main_nav ul li
 {
@@ -366,13 +366,75 @@ section
 	color: #FFFFFF;
 	white-space: nowrap;
 }
-.header_phone
+.header_right_panel
 {
 	margin-right: 60px;
 	font-family: 'Oswald', sans-serif;
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 500;
 	color: #FFFFFF;
+}
+.header_right_user_panel
+{
+	margin-right: 60px;
+	font-family: 'Oswald', sans-serif;
+	font-size: 14px;
+	font-weight: 500;
+	color: #FFFFFF;
+}
+.header_right_user_panel ul li
+{
+	position: relative;
+}
+.header_right_user_panel ul li::after
+{
+	display: block;
+	position: absolute;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	transform: translateX(-50%);
+	top: -104px;
+	width: 2px;
+	height: 0px;
+	background: #FFFFFF;
+	content: '';
+	visibility: hidden;
+	opacity: 0;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.header_right_user_panel ul li.active::after,
+.header_right_user_panel ul li:hover::after
+{
+	height: 100px;
+	visibility: visible;
+	opacity: 1;
+}
+.header_right_user_panel ul li:not(:last-child)
+{
+	margin-right: 54px;
+}
+.header_right_user_panel ul li a
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	color: #FFFFFF;
+	white-space: nowrap;
+}
+.header_right_user_panel ul li button
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	color: #FFFFFF;
+	white-space: nowrap;
 }
 .header_social
 {
@@ -1095,10 +1157,11 @@ section
 .news_post_date div:first-child
 {
 	font-family: 'Oswald', sans-serif;
-	font-size: 48px;
-	font-weight: 400;
+	font-size: 30px;
+	font-weight: 500;
 	color: #181818;
 	line-height: 0.75;
+	margin-top: 20px;
 }
 .news_post_date div:last-child
 {

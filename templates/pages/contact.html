@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}Contact - B&A{% endblock %}
+
+{% block content %}
+
+<div class="home">
+  <div class="background_image" style="background-image:url({% static 'images/contact.jpg' %})"></div>
+  <div class="home_slider_content_container">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="home_slider_content">
+            <div class="home_title">
+              <h2>Contact us</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top: 50px;" class="contact">
+  <div class="container">
+    <div class="row">
+
+      <!-- Get in touch -->
+      <div class="col-lg-6">
+        <div class="contact_content">
+          <div class="contact_title">Get in touch with us</div>
+          <div class="contact_text">
+            <p>Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo. Vivamus massa.Tempor massa et laoreet. Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo. Vivamus massa.</p>
+          </div>
+          <div class="contact_list">
+            <ul>
+              <li>
+                <div>address:</div>
+                <div>1481 Creekside Lane Avila Beach, CA 931</div>
+              </li>
+              <li>
+                <div>phone:</div>
+                <div>+53 345 7953 32453</div>
+              </li>
+              <li>
+                <div>email:</div>
+                <div>yourmail@gmail.com</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="col-lg-6">
+        <div class="contact_form_container">
+          <form method="post" id="contact_form" class="contact_form">
+            {%csrf_token%}
+            {% if not request.user.is_authenticated %}
+              <div style="margin-bottom: 18px">
+                {{form.name}}
+                <div class="input_border"></div></div>
+                {% if form.name.errors %}
+                <div class="alert alert-warning">
+                  {{ form.name.errors }}
+                </div>
+                {% endif %}
+              <div class="row">
+                <div class="col-lg-6" style="margin-bottom: 18px">
+                  {{form.email}}
+                </div>
+                <div class="col-lg-6" style="margin-bottom: 18px">
+                  {{form.subject}}
+                </div>
+              </div>
+              {% if form.email.errors %}
+              <div class="alert alert-warning">
+                {{ form.email.errors }}
+              </div>
+              {% endif %}
+              {% if form.subject.errors %}
+              <div class="alert alert-warning">
+                {{ form.subject.errors }}
+              </div>
+              {% endif %}
+            {% else %}
+              {% if form.name.errors %}
+              <div class="alert alert-warning">
+                {{ form.name.errors }}
+              </div>
+              {% endif %}
+              {% if form.email.errors %}
+              <div class="alert alert-warning">
+                {{ form.email.errors }}
+              </div>
+              {% endif %}
+              <div style="margin-bottom: 18px">
+              {{form.subject}}
+              <div class="input_border"></div></div>
+              {% if form.subject.errors %}
+              <div class="alert alert-warning">
+                {{ form.subject.errors }}
+              </div>
+              {% endif %}
+            {% endif %}
+            <div>
+              {{form.message}}
+              <div class="input_border" style="bottom:3px"></div></div>
+              {% if form.message.errors %}
+              <div class="alert alert-warning">
+                {{ form.message.errors }}
+              </div>
+              {% endif %}
+            <button class="contact_button">send</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Map -->
+
+<div class="contact_map">
+  <!-- Google Map -->
+  <div class="map">
+    <div id="google_map" class="google_map">
+      <div class="map_container">
+        <div id="map"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+{% block main_js %}
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAOeb2Q0k-J1QXhaTiDdsEx0KuUJtsOkXY"></script>
+{% endblock %}
+{% block main_js_after %}
+<script>
+  var myLatlng = new google.maps.LatLng(52.233235, 21.019306);
+    var mapOptions =
+    {
+      center: myLatlng,
+        zoom: 14,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    draggable: true,
+    scrollwheel: false,
+    zoomControl: true,
+    zoomControlOptions:
+    {
+      position: google.maps.ControlPosition.RIGHT_CENTER
+    },
+    mapTypeControl: false,
+    scaleControl: false,
+    streetViewControl: false,
+    rotateControl: false,
+    fullscreenControl: true,
+    styles:
+    [
+      {
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "color": "#ffeba1"
+          }
+        ]
+      }
+    ]
+    }
+
+    // Initialize a map with options
+    map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+  // Re-center map after window resize
+  google.maps.event.addDomListener(window, 'resize', function()
+  {
+    setTimeout(function()
+    {
+      google.maps.event.trigger(map, "resize");
+      map.setCenter(myLatlng);
+    }, 1400);
+  });
+</script>
+{% endblock %}

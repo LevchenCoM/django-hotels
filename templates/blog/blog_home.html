@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}Blog - B&A{% endblock %}
+
+{% block content %}
+
+<!-- Home -->
+
+<div class="home">
+  <div class="background_image" style="background-image:url({% static 'images/header_apart_list.png' %})"></div>
+  <div class="home_slider_content_container">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="home_slider_content">
+            <div class="home_title">
+              <h2>Blog</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- News -->
+
+<div class="news">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="news_container">
+          {% include 'blog/post_list.html' %}
+        </div>
+
+      <!-- Sidebar -->
+      <div class="col-lg-4">
+        <div class="news_sidebar">
+
+          {% include 'blog/sidebar_categories.html' %}
+
+          {% include 'blog/sidebar_latest_posts.html' %}
+
+          {% include 'blog/banner.html' %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

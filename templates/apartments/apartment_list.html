@@ -1,0 +1,46 @@
+<!-- apartments -->
+
+<div class="apartments" id="apartments">
+  <div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <div class="section_subtitle">simply amazing places</div>
+        <div class="section_title">
+          <h2>Our Apartments</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row apartments_row">
+      <div class="col">
+        <div class="apartments_container item_grid">
+
+          <!-- apartment -->
+          {% for apartment in apartments %}
+          <div class="apartment item">
+            <div class="apartment_image">
+              {% for i in apartment.apartmentimage_set.all %}
+              {% if i.number_of_image is 1 %}
+              <a href="/apartments/{{apartment.id}}"><img src="{{ i.image.url }}" alt="{{ apartment.name }}"></a>
+              {% endif %}
+              {% endfor %}
+              {% if apartment.special_offer %}
+              <div class="spec_offer text-center"><a href="/apartments/{{apartment.id}}">Special Offer</a></div>
+              {% endif %}
+            </div>
+            <div class="apartment_content">
+              <div class="apartment_title"><a href="/apartments/{{apartment.id}}">{{ apartment.name }}</a></div>
+              <div class="apartment_subtitle">
+                <p>{{ apartment.short_description }}</p>
+              </div>
+              <div class="apartment_price">From ${{ apartment.price }} per night</div>
+            </div>
+            <a href="/apartments/{{apartment.id}}">
+              <div class="book_button">book</div>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

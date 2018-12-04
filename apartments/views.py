@@ -5,6 +5,14 @@ from reservations.models import Reservation, Status, ApartmentInReservation, Res
 from datetime import datetime, date
 from django.core.mail import send_mail
 # Create your views here.
+
+def apartments(request):
+    apartments = Apartment.objects.filter(is_active = True)
+    context = {'apartments':apartments}
+
+    return render(request,'apartments/apartments.html', context)
+
+
 def apartment(request, apartment_id):
     try:
         apartment = Apartment.objects.get(id=apartment_id)
@@ -33,6 +41,7 @@ def apartment(request, apartment_id):
                                                          price_per_item=apartment.price,
                                                          total_price=total_price)
         apartment_in_reservation.save()
+        return render(request,'apartments/book_done.html')
         # send_mail(
         #     'Subject here',
         #     'Here is the message.',
@@ -46,4 +55,4 @@ def apartment(request, apartment_id):
         disableDates.append('{}/{}/{}'.format(d_date.date.day, d_date.date.month, d_date.date.year))
     context = {'apartment':apartment,'apartment_images': apartment_images, 'disableDates':disableDates}
 
-    return render(request,'apartment.html',context)
+    return render(request,'apartments/apartment.html',context)

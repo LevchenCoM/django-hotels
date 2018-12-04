@@ -48,10 +48,10 @@ $(document).ready(function() {
 
   initMenu();
   initHomeSlider();
-  initIsotope();
   initTestimonialsSlider();
   initScrolling();
-  initInput();
+  initIsotope();
+  // initInput();
   /*
 
   2. Set Header

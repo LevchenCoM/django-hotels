@@ -75,9 +75,9 @@
 {
 	.main_nav
 	{
-		margin-left: 150px;
+		/* margin-left: 150px; */
 	}
-	.header_phone
+	.header_right_user_panel
 	{
 		margin-right: 0;
 	}
@@ -112,7 +112,7 @@
 @media only screen and (max-width: 991px)
 {
 	.main_nav,
-	.header_phone
+	.header_right_user_panel
 	{
 		display: none;
 	}
