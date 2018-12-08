@@ -160,8 +160,7 @@ EMAIL_USE_TLS=True
 LOGIN_REDIRECT_URL = '/home'
 LOGIN_URL = '/user/sign-in/'
 
-# try:
-# from .settings_prod import *
-# except:
-#     print('Ploho')
-#     pass
+try:
+    from .settings_prod import *
+except:
+    pass

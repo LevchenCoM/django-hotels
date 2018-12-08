@@ -18,8 +18,6 @@ def apartment(request, apartment_id):
         apartment = Apartment.objects.get(id=apartment_id)
     except:
         return HttpResponseNotFound()
-    # test_date = "{}/{}/{}".format(test_date.day, test_date.month, test_date.year)
-    # print(test_date)
 
     if request.method == "POST":
         check_in = datetime.strptime(request.POST['check_in'],'%d/%m/%y')

@@ -114,7 +114,11 @@
 
 <div class="menu">
   <div class="menu_header d-flex flex-row align-items-center justify-content-start">
+    {% if request.user.is_authenticated %}
     <div class="menu_logo"><a href="/user/profile/">{{request.user}}</a></div>
+    {% else %}
+    <div class="menu_logo"><a href="/user/profile/">B&A</a></div>
+    {% endif %}
     <div class="menu_close_container ml-auto">
       <div class="menu_close">
         <div></div>
