@@ -1,4 +1,4 @@
-DEBUG = False
+# DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 FILE_UPLOAD_PERMISSIONS = 0o644
