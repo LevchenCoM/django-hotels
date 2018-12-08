@@ -10,7 +10,7 @@ class Apartment(models.Model):
     price = models.DecimalField(max_digits=10,decimal_places=2, default=0)
     special_offer = models.BooleanField(default=False)
     special_price = models.DecimalField(max_digits=10,decimal_places=2, default=0)
-    image_main = models.ImageField(upload_to='product_images/')
+    # image_main = models.ImageField(upload_to='product_images/')
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
