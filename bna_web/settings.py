@@ -192,7 +192,7 @@ TINYMCE_DEFAULT_CONFIG = {
     'width': '1000'
 }
 
-# try:
-#     from .settings_prod import *
-# except:
-#     pass
+try:
+    from .settings_prod import *
+except:
+    pass
