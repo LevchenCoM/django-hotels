@@ -32,6 +32,7 @@ urlpatterns = i18n_patterns(
     path('contact/',include('contact.urls')),
     path('about-us/', pages_views.about_us),
     path('blog/', include('blog.urls')),
+    path('tinymce/', include('tinymce.urls'))
 ) \
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

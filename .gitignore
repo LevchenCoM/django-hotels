@@ -2,6 +2,7 @@
 *sqlite3
 /__pycache__/
 /DELETE/
+/Media/*
 settings_prod.py
 *.pyc
 *.docx

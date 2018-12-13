@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks',
+    'tinymce',
     'home.apps.HomeConfig',
     'apartments.apps.ApartmentsConfig',
     'reservations.apps.ReservationsConfig',
@@ -160,7 +161,38 @@ EMAIL_USE_TLS=True
 LOGIN_REDIRECT_URL = '/home'
 LOGIN_URL = '/user/sign-in/'
 
-try:
-    from .settings_prod import *
-except:
-    pass
+TINYMCE_JS_URL = STATIC_URL + 'tinymce/js/tinymce/tinymce.min.js'
+TINYMCE_JS_ROOT = STATIC_ROOT + 'tinymce/js/tinymce/'
+TINYMCE_SPELLCHECKER = False
+TINYMCE_COMPRESSOR = False
+
+TINYMCE_DEFAULT_CONFIG = {
+    'theme': 'modern',
+    'plugins': "table,paste,searchreplace,autolink,advlist,fullpage,fullscreen,visualchars,preview,media,"
+               "insertdatetime,directionality,contextmenu,wordcount",
+    'theme_advanced_path_location': "bottom",
+    'theme_advanced_buttons1': "fullscreen,separator,preview,separator,media,cut,copy,paste,separator,undo,redo,"
+                                "separator,search,replace,separator,code,separator,cleanup,separator,bold,italic,"
+                                "underline,strikethrough,separator,forecolor,backcolor,separator,justifyleft,"
+                                "justifycenter,justifyright,justifyfull,separator,help",
+    'theme_advanced_buttons2': "removeformat,styleselect,formatselect,fontselect,fontsizeselect,separator,bullist,"
+                                "numlist,outdent,indent,separator,link,unlink,anchor",
+    'theme_advanced_buttons3': "sub,sup,separator,image,insertdate,inserttime,separator,tablecontrols,separator,hr,"
+                                "advhr,visualaid,separator,charmap,emotions,iespell,flash,separator,print",
+    'mode': 'textareas',
+    'theme_advanced_toolbar_location': 'top',
+    'advimage_update_dimensions_onchange': True,
+    'browsers': 'gecko',
+    'dialog_type': 'modal',
+    'object_resizing': True,
+    'cleanup_on_startup': True,
+    'forced_root_block': 'p',
+    'remove_trailing_nbsp': True,
+    'height': '400',
+    'width': '1000'
+}
+
+# try:
+#     from .settings_prod import *
+# except:
+#     pass

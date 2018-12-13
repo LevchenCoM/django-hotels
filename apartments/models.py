@@ -1,16 +1,15 @@
 from django.db import models
-# from reservations.models import Reservation
-# Create your models here.
+from tinymce import models as tinymce_models
 
 class Apartment(models.Model):
     is_active  = models.BooleanField(default=True)
     name = models.CharField(max_length=64, blank=True, null=True)
     short_description = models.TextField(max_length=200, blank=True, null=True)
-    description = models.TextField(blank=True, null=True)
+    # description = models.TextField(blank=True, null=True)
+    description = tinymce_models.HTMLField()
     price = models.DecimalField(max_digits=10,decimal_places=2, default=0)
     special_offer = models.BooleanField(default=False)
     special_price = models.DecimalField(max_digits=10,decimal_places=2, default=0)
-    # image_main = models.ImageField(upload_to='product_images/')
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 

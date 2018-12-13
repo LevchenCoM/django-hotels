@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.conf import settings
 from .models import *
 # Register your models here.
 
@@ -19,6 +20,8 @@ class ApartmentAdmin(admin.ModelAdmin):
 
     class Meta:
         model = Apartment
+    class Media:
+        js = (settings.TINYMCE_JS_URL,)
 
 @admin.register(ApartmentImage)
 class ApartmentImageAdmin(admin.ModelAdmin):
