@@ -7,3 +7,4 @@ settings_prod.py
 *.pyc
 *.docx
 *.7z
+venv/
