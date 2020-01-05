@@ -1,5 +1,6 @@
 **/.idea
 *sqlite3
+*~
 /__pycache__/
 /DELETE/
 /Media/*
@@ -8,3 +9,5 @@ settings_prod.py
 *.docx
 *.7z
 venv/
+**/migrations/**
+!**/migrations/__init__.py
